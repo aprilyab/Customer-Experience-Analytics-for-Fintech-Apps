@@ -1,0 +1,97 @@
+# -------------------------
+# Python Bytecode and Cache
+# -------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# -------------------------
+# Virtual Environments
+# -------------------------
+env/
+venv/
+ENV/
+.VENV/
+.venv/
+
+# -------------------------
+# Jupyter Notebook Checkpoints
+# -------------------------
+.ipynb_checkpoints/
+
+# -------------------------
+# Data Files
+# -------------------------
+*.csv
+*.json
+*.tsv
+*.xlsx
+data/
+scraped_reviews/
+outputs/
+
+# Allow final cleaned data (optional)
+!final_cleaned_data.csv
+
+# -------------------------
+# Visualizations / Figures
+# -------------------------
+*.png
+*.jpg
+*.jpeg
+*.svg
+*.pdf
+figures/
+visualizations/
+
+# -------------------------
+# Databases & SQL Dumps
+# -------------------------
+*.db
+*.sqlite
+*.sql
+*.bak
+oracle_dump.sql
+
+# -------------------------
+# Log & Test Output
+# -------------------------
+*.log
+*.out
+coverage/
+test-results/
+
+# -------------------------
+# Environment Variables / Secrets
+# -------------------------
+.env
+*.key
+*.pem
+*.crt
+config.ini
+
+# -------------------------
+# IDE & OS Generated Files
+# -------------------------
+
+# VSCode
+.vscode/
+
+# PyCharm
+.idea/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# -------------------------
+# Miscellaneous
+# -------------------------
+*.zip
+*.tar.gz
+*.tar
+*.rar

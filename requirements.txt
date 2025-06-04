@@ -1,0 +1,25 @@
+# --- Core Libraries ---
+pandas
+numpy
+
+# --- Web Scraping ---
+google-play-scraper
+
+# --- NLP & Sentiment Analysis ---
+textblob
+vaderSentiment
+spacy
+transformers
+sentence-transformers
+scikit-learn
+
+# --- Data Visualization ---
+matplotlib
+seaborn
+wordcloud
+
+# --- Oracle Database Support ---
+oracledb
+
+# --- Development & Testing ---
+pytest
