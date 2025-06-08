@@ -5,7 +5,7 @@ apps = {
     "Commercial Bank of Ethiopia": "com.combanketh.mobilebanking",
     "Bank of Abyssinia": "com.boa.boaMobileBanking",
     "Dashen Bank": "com.dashen.dashensuperapp"
-} ...
+} 
 
 all_reviews = []
 
@@ -44,7 +44,7 @@ for bank, package_name in apps.items():
 # Convert to DataFrame
 df = pd.DataFrame(all_reviews)
 print(f"Total reviews scraped: {len(df)}")
-task-1
+
 # Drop duplicates and missing data
 df.drop_duplicates(subset=['review'], inplace=True)
 df.dropna(subset=['review', 'rating'], inplace=True)
