@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 
 # Load cleaned data
-df = pd.read_csv("cleaned_data.csv")
+df = pd.read_csv("bank_reviews_cleaned.csv")
 
 # Sentiment distribution
 plt.figure(figsize=(6, 4))
