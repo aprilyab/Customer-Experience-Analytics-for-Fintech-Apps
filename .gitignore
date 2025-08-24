@@ -35,16 +35,7 @@ outputs/
 # Allow final cleaned data (optional)
 !final_cleaned_data.csv
 
-# -------------------------
-# Visualizations / Figures
-# -------------------------
-*.png
-*.jpg
-*.jpeg
-*.svg
-*.pdf
-figures/
-visualizations/
+
 
 # -------------------------
 # Databases & SQL Dumps
