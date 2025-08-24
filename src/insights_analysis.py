@@ -1,50 +1,31 @@
-# task-4/insights_analysis.py
-
 import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-from wordcloud import WordCloud
-import os
+from sklearn.feature_extraction.text import TfidfVectorizer
 
-# Make sure plots directory exists
-os.makedirs("plots", exist_ok=True)
+df = pd.read_csv("data/processed/final_bank_apps_review_data.csv")
 
-# Load cleaned data
-df = pd.read_csv("bank_reviews_labeled.csv")
+# Positive drivers
+drivers_keywords = ['fast', 'easy', 'smooth', 'reliable', 'secure', 'userfriendly', 'good', 'excellent']
 
-# Normalize column names
-df.columns = df.columns.str.strip().str.lower()
+# Negative pain points
+pain_keywords = ['crash', 'slow', 'error', 'problem', 'bug', 'dont', 'doesnt', 'cant', 'worst', 'issue']
 
-# Sentiment distribution
-plt.figure(figsize=(6, 4))
-sns.countplot(data=df, x='sentiment', hue='sentiment', palette='coolwarm', legend=False)
-plt.title("Sentiment Distribution")
-plt.savefig("plots/sentiment_distribution.png")
-plt.show()
 
-# Rating distribution
-plt.figure(figsize=(6, 4))
-sns.histplot(df['rating'], bins=5, kde=True)
-plt.title("Rating Distribution")
-plt.savefig("plots/rating_distribution.png")
-plt.show()
+drivers_count = {}
+pain_count = {}
 
-# WordCloud for keywords
-text = " ".join(df['review'].dropna().astype(str).tolist())
-wordcloud = WordCloud(width=800, height=400, background_color='white').generate(text)
-plt.figure(figsize=(10, 5))
-plt.imshow(wordcloud, interpolation='bilinear')
-plt.axis("off")
-plt.title("Common Keywords in Reviews")
-plt.savefig("plots/wordcloud.png")
-plt.show()
+for bank in df['bank'].unique():
+    bank_reviews = df[df['bank'] == bank]['processed_review'].astype(str)
+    
+    # Count drivers
+    drivers_count[bank] = sum(bank_reviews.str.contains('|'.join(drivers_keywords), case=False))
+    
+    # Count pain points
+    pain_count[bank] = sum(bank_reviews.str.contains('|'.join(pain_keywords), case=False))
 
-# Comparison: CBE vs BOA
-banks = df[df['bank'].isin(['CBE', 'BOA'])]
-plt.figure(figsize=(6, 4))
-sns.boxplot(data=banks, x='bank', y='rating', palette='Set2')
-plt.title("Rating Comparison: CBE vs BOA")
-plt.savefig("plots/bank_rating_comparison.png")
-plt.show()
+print("Drivers count per bank:", drivers_count)
+print("Pain points count per bank:", pain_count)
 
-print("✅ Analysis complete. Plots displayed and saved in /plots.")
+
+
+avg_rating = df.groupby('bank')['rating'].mean().sort_values(ascending=False)
+print(avg_rating)
